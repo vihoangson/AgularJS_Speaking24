@@ -7,21 +7,81 @@
 	<!-- <script language="javascript" src="https://code.angularjs.org/2.0.0-beta.8/angular2.min.js"></script> -->
 	<script language="javascript" src="https://code.angularjs.org/1.5.0/angular.min.js"></script>
 	<script language="javascript" src="app/app.js"></script>
+	<style>
+		h1,.error{
+			color:red;
+		}
+		.warning{
+			color:yellow;
+		}
+	</style>
 </head>
 <body ng-app="myApp" ng-controller="Homepage">
-
+	
+	<h1>Bind model</h1>
 	<input ng-model="input_app">
-	<h1>{{input_app}}</h1>
+	<h3>{{input_app}}</h3>
 
 	<hr>
+	<h1>Truyển $scope</h1>
 	<h2>{{message}}</h2>
+	<h3 ng-bind="message"></h3>
 
 	<hr>
+	<h1>Máy tính</h1>
 	<p><input ng-model="a"/></p>
 	<p><input ng-model="b"/></p>
 	<p>============</p>
 	<h2>Result: {{result}}</h2>
-	<button ng-click="cong()"> (+) </button> <button ng-click="tru()"> (-) </button> <button ng-click="nhan()"> (x) </button> <button ng-click="chia()"> (%) </button> 
+	<button ng-click="cong()"> (+) </button> 
+	<button ng-click="tru()"> (-) </button> 
+	<button ng-click="nhan()"> (x) </button> 
+	<button ng-click="chia()"> (%) </button> 
+
+	<hr>
+	<h1>Validate form</h1>
+	<form name="myForm" ng-submit="mysubmit(myForm.$valid)">
+		<p>Username: <input ng-model="username" ng-minlength="3" ng-maxlength="8"></p>
+		<p ng-show="myForm.username.$error.minlength" class="help-block">Username is too short.</p>
+		<p ng-show="myForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+		<p><button type="submit"> Submit</button></p>
+	</form>
+
+	<hr>
+	<h1>Shopping cart (ng-repeate)</h1>
+	<div ng-repeat="item in items">
+		<hr>
+		<div><b>Title</b>: {{item.title}}</div>
+		<div><b>Price</b>: {{item.price | currency}}</div>
+	</div>
+	<button type="button" ng-click="splice_item()">Splice item</button>
+
+	<hr>
+	<h1>Hiding and Showing</h1>
+	<div ng-show="target_hide"><b>Target_hiding_showing</b>: {{target_hiding_showing}}</div>
+	<button type="button" ng-click="do_hiding_showing()">Do hiding showing</button>
+
+
+	<hr>
+	<h1>Hiding and Showing</h1>
+	<p>ng-class='{error: isError, warning: isWarning}'</p>
+	<div ng-class='{error: isError, warning: isWarning}' >ng-class</div>
+	<button type="button" ng-click="do_ng_class_error()">Do ng class Error</button>
+	<button type="button" ng-click="do_ng_class_warning()">Do ng class Warning</button>
+
+	<hr>
+	<h1>$scope.$watch</h1>
+	{{discount_price}}
+	<button type="button" ng-click="add_sum()">add_sum</button>
+	<button type="button" ng-click="add_discount()">add_discount</button>
+
+	<hr>
+	<h1>HTTP get data</h1>
+	<button type="button" ng-click="get_data()">get_data</button>
+
+	<hr>
+
+	<center><img src="http://codeschunks.com/wp-content/uploads/2015/10/angularjs.png"></center>
 
 </body>
 </html>
