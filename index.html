@@ -6,9 +6,24 @@
 	<!-- <script language="javascript" src="app/components/angular.min.js"></script> -->
 	<!-- <script language="javascript" src="https://code.angularjs.org/2.0.0-beta.8/angular2.min.js"></script> -->
 	<script language="javascript" src="https://code.angularjs.org/1.5.0/angular.min.js"></script>
+	<script language="javascript" src="app/app.js"></script>
 </head>
-<body ng-app="">
+<body ng-app="myApp" ng-controller="Homepage">
+
 	<input ng-model="input_app">
-	{{input_app}}
+	<h1>{{input_app}}</h1>
+
+	<hr>
+	<h2>{{message}}</h2>
+
+	<hr>
+	<p><input ng-model="a"/></p>
+	<p><input ng-model="b"/></p>
+	<p>============</p>
+	<h2>Result: {{result}}</h2>
+	<button ng-click="cong()"> (+) </button> <button ng-click="tru()"> (-) </button> <button ng-click="nhan()"> (x) </button> <button ng-click="chia()"> (%) </button> 
+
 </body>
 </html>
+
+
