@@ -1,7 +1,7 @@
 angular.module('app', [
 	'ngRoute',
 	'app.controllers'
-]).config(['$routeProvider', function($routeProvider){
+]).config(function($routeProvider){
 	$routeProvider.when('/', {
 		templateUrl: 'views/post.html',
 		controller: 'PostController'
@@ -11,7 +11,10 @@ angular.module('app', [
 	}).when('/page/:id', {
 		templateUrl: 'views/page.html',
 		controller: 'PageController'
+	}).when('/archive/:id', {
+		templateUrl: 'views/archive.html',
+		controller: 'ArchiveController'
 	}).otherwise({
 		redirectTo: '/'
 	});
-}]);
+});
